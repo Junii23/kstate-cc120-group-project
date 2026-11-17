@@ -1,7 +1,7 @@
 <!doctype HTML>
 <html lang="en">
     <head>
-        <title>CC 120 Group Project!! :3 - Junii's Article</title>
+        <title>CC 120 Group Project!! :3 - My Article</title>
         <meta charset="utf-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
         <link href="style.css" rel="stylesheet">
@@ -13,9 +13,26 @@
             </nav>
         </header>
         <main>
-            <article>
-                <h1>Article Name Here!</h1>
-                <p>body text here!</p>
+            <p><i>Junii Harootunian's Article:</i></p>
+            <article >
+                <h1>How I turned a normal heater into an IoT device for home automation!</h1>
+                <p>Recently, I decided to undertake a project to convert my room's heater into an IOT device for use with Home Assistant in order to more easily maintain my rooms temperature.</p>
+                <p>There's many ways to approach this goal, though my idea was to build some device that could automatically rotate the temperature knob and turn it on and off.</p>
+                <p>On hand, I had an <a href="https://en.wikipedia.org/wiki/ESP8266">ESP8266</a> Wi-Fi enabled microcontroller, a stepper motor, and various wiring and power components. After some experimentation, I realized the stepper motor would not be able to directly rotate the knob as it does not have enough torque! The solution to this was to use a gear system to increase the torque of the stepper motor, at the expense of reducing speed.</p>
+                <img src="junii-gear-render.png" alt="A 3D render of the designed worm gear system" style="max-height: 20rem; float: left; margin-right: 1vw; margin-bottom: 1vw;">
+                <p>But how would I get or even assemble any such gears? I wasn't sure either, so I picked up <a href="https://en.wikipedia.org/wiki/Autodesk_Fusion">Fusion 360</a> and learned how to design suitable gears and something to hold them all together! Specifically, I went with a worm gear that resulted in a 32:1 gear ratio, meaning the output shaft has 32 times more torque at the expense of being 32 times slower. For just turning a stubborn knob, the speed actually doesn't matter much! As for how to actually get these gears after designing them, I used a 3D printer to print them at home.</p>
+                <p>Designing the model for a gear system like this was actually the largest and most challenging part of this project, but it's just one part of many!</p>
+                <p>After the gear system was designed, I needed to hook everything up to it. I settled on using a 5V 28BYJ-48 stepper motor with a ULN2003 driver board, driven by an ESP8266 microcontroller. The ESP8266 is able to talk to the driver board and control the stepper motor easily. Since the ESP8266 has built-in WiFi, I was able to connect it to the rest of my devices quite easily using <a href="https://en.wikipedia.org/wiki/MQTT">MQTT</a>, a simple communication protocol frequently used in IoT devices.</p>
+                <br>
+                <img src="junii-esp-code.png" alt="A snippet of C++ code running on the ESP8266" style="max-height: 10rem; float: right; margin-left: 1vw; margin-bottom: 1vw;">
+                <p>But what exactly would this ESP8266 board talk to over WiFi and MQTT? It talks to <a href="https://www.home-assistant.io/">Home Assistant</a>! Home Assistant is an open source home automation operating system that allows you to control tons of home devices and even design your own if you are able to program it. Using Home Assistant, I'm now able to talk to the stepper motor over WiFi using my a website or even a phone app!</p>
+                <p>But, more importantly, I was able to control the heater without any input from me. This means that I'm now able to have Home Assistant control it automatically! Using a temperature sensor in my room from a previous project, I'm able to trivially setup a DIY thermostat for my room and have the heater automatically turn on and off to maintain my desired temperature as needed!</p>
+                <p>Overall, this might seem like an excessive amount of work to literally just make my room a little bit warmer. I am not disagreeing with that, but it was a fun project and actually positively impacts my daily life. My favorite part so far was having the heater turn on half an hour before I wake up in the morning so I wake up to a nice and warm room even when the weather outside is freezing, it makes getting out of bed so much easier for me. But really, this was a great learning experience!</p>
+                <p>Below is the final assembly system, featuring the heater istelf, the gear system, stepper motor, and a nice box to hold the ESP8266, with the old heater knob sitting on top:</p>
+                <img src="junii-assembled-device.jpg" alt="The assembled device with the stepper motor and gear system" style="max-width: 30vw">
+                <br>
+                <br>
+                <p><i>Hopefully you found this article at least a little big interesting!</i></p>
             </article>
         </main>
         <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>

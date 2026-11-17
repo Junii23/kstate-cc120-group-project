@@ -40,3 +40,12 @@ header {
 .article-collection li {
     margin: 5px 0;
 }
+
+article {
+    width: 90%;
+    margin: 10px auto 10px;
+    border-left: 4px solid #220e53;
+    text-align: left;
+    padding: 10px;
+    background-color: #e8cdf2;
+}
