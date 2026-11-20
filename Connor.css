@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 32px 20px;
+  background: #f2efe9;
+  color: #242424;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+main {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1;
+}
+
+.drum-image {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  margin: 0 auto 24px;
+  border: 8px solid white;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.box {
+  margin: 18px 0;
+  padding: 24px 28px;
+  background: white;
+  border-left: 6px solid #b86b47;
+  border-radius: 4px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  margin: 0 0 12px;
+  color: #7a3f29;
+}
+
+p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.65;
+}
